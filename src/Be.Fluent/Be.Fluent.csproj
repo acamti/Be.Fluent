@@ -2,8 +2,11 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <AssemblyName>Acamti.Core.Extensions</AssemblyName>
-    <RootNamespace>Acamti.Core.Extensions</RootNamespace>
+    <AssemblyName>Acamti.Be.Fluent</AssemblyName>
+    <RootNamespace>Acamti.Be.Fluent</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+  </ItemGroup>
 
 </Project>
