@@ -4,7 +4,7 @@ using System.Linq;
 using Acamti.Be.Fluent.With.IEnumerables;
 using FluentAssertions;
 
-namespace Be.Fluent.Tests
+namespace Be.Fluent.Tests.Describe_With_IEnumerables
 {
     [TestClass]
     public class Describe_AddExtensions
