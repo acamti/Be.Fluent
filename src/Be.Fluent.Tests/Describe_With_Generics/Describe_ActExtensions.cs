@@ -10,99 +10,107 @@ namespace Be.Fluent.Tests.Describe_With_Generics
     public class Describe_ActExtensions
     {
         [TestMethod]
-        public async Task It_ShouldTransform_SynchronousSource_to_AsynchronousTarget()
+        public async Task It_ShouldTransform_AsynchronousTarget()
         {
             var source = 1;
             var expected = "1";
             string container = null;
 
-            await source.Act(item => Task.Run(() => container = item.ToString()));
+            var result = await source.Act(item => Task.Run(() => container = item.ToString()));
 
             container.Should().BeEquivalentTo(expected);
+            result.Should().Be(source);
         }
 
         [TestMethod]
-        public async Task It_ShouldTransform_SynchronousSource_to_AsynchronousTarget_With1Param()
+        public async Task It_ShouldTransform_AsynchronousTarget_With1Param()
         {
             var source = 1;
             var expected = "1.0";
             string container = null;
 
-            await source.Act(async (item, param1) => container = await Task.FromResult($"{source}.{param1}"), 0);
+            var result = await source.Act((item, param1) => Task.Run(()=> container = $"{source}.{param1}"), 0);
 
             container.Should().BeEquivalentTo(expected);
+            result.Should().Be(source);
         }
 
         [TestMethod]
-        public async Task It_ShouldTransform_SynchronousSource_to_AsynchronousTarget_With2Param()
+        public async Task It_ShouldTransform_AsynchronousTarget_With2Param()
         {
             var source = 1;
             var expected = "1.0.0";
             string container = null;
 
-            await source.Act(async (item, param1, param2) => container = await Task.FromResult($"{source}.{param1}.{param2}"), 0, 0);
+            var result = await source.Act((item, param1, param2) => Task.Run(()=> container = $"{source}.{param1}.{param2}"), 0, 0);
 
             container.Should().BeEquivalentTo(expected);
+            result.Should().Be(source);
         }
 
         [TestMethod]
-        public async Task It_ShouldTransform_SynchronousSource_to_AsynchronousTarget_With3Param()
+        public async Task It_ShouldTransform_AsynchronousTarget_With3Param()
         {
             var source = 1;
             var expected = "1.0.0.0";
             string container = null;
 
-            await source.Act(async (item, param1, param2, param3) => container = await Task.FromResult($"{source}.{param1}.{param2}.{param3}"), 0, 0, 0);
+            var result = await source.Act((item, param1, param2, param3) => Task.Run(()=> container = $"{source}.{param1}.{param2}.{param3}"), 0, 0, 0);
 
             container.Should().BeEquivalentTo(expected);
+            result.Should().Be(source);
         }
 
         [TestMethod]
-        public void It_ShouldTransform_SynchronousSource_to_SynchronousTarget()
+        public void It_ShouldTransform_SynchronousTarget()
         {
             var source = 1;
             var expected = "1";
             string container = null;
 
-            source.Act(item => container = item.ToString());
+            var result = source.Act(item => container = item.ToString());
 
             container.Should().BeEquivalentTo(expected);
+            result.Should().Be(source);
         }
 
         [TestMethod]
-        public void It_ShouldTransform_SynchronousSource_to_SynchronousTarget_With1Param()
+        public void It_ShouldTransform_SynchronousTarget_With1Param()
         {
             var source = 1;
             var expected = "1.0";
             string container = null;
 
-            source.Act((item, param1) => container = $"{source}.{param1}", 0);
+            var result = source.Act((item, param1) => container = $"{source}.{param1}", 0);
 
             container.Should().BeEquivalentTo(expected);
+            result.Should().Be(source);
         }
 
         [TestMethod]
-        public void It_ShouldTransform_SynchronousSource_to_SynchronousTarget_With2Param()
+        public void It_ShouldTransform_SynchronousTarget_With2Param()
         {
             var source = 1;
             var expected = "1.0.0";
             string container = null;
 
-            source.Act((item, param1, param2) => container = $"{source}.{param1}.{param2}", 0, 0);
+            var result = source.Act((item, param1, param2) => container = $"{source}.{param1}.{param2}", 0, 0);
 
             container.Should().BeEquivalentTo(expected);
+            result.Should().Be(source);
         }
 
         [TestMethod]
-        public void It_ShouldTransform_SynchronousSource_to_SynchronousTarget_With3Param()
+        public void It_ShouldTransform_SynchronousTarget_With3Param()
         {
             var source = 1;
             var expected = "1.0.0.0";
             string container = null;
 
-            source.Act((item, param1, param2, param3) => container = $"{source}.{param1}.{param2}.{param3}", 0, 0, 0);
+            var result = source.Act((item, param1, param2, param3) => container = $"{source}.{param1}.{param2}.{param3}", 0, 0, 0);
 
             container.Should().BeEquivalentTo(expected);
+            result.Should().Be(source);
         }
     }
 }
