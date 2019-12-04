@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace Be.Fluent.Tests.Describe_With_Tasks
 {
     [TestClass]
-    public class Describe_ProduceExtensions
+    public class Describe_WaitAndProduceExtensions
     {
         [TestMethod]
         public async Task It_ShouldTransform_SynchronousSource_to_AsynchronousTarget()
