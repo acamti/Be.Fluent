@@ -10,6 +10,7 @@ namespace Acamti.Be.Fluent.With.IEnumerables
         public static IEnumerable<TTSource> Add<TTSource>(this IEnumerable<TTSource> source, TTSource item)
         {
             return source
+                .Clone()
                 .Safe()
                 .Concat(item.ToEnumerable());
         }
@@ -17,6 +18,7 @@ namespace Acamti.Be.Fluent.With.IEnumerables
         public static IEnumerable<TTSource> Add<TTSource>(this IEnumerable<TTSource> source, Func<TTSource> funcOfitem)
         {
             return source
+                .Clone()
                 .Safe()
                 .Concat(funcOfitem().ToEnumerable());
         }
