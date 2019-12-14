@@ -1,13 +1,12 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using FluentAssertions;
 using Acamti.Be.Fluent.With.Tasks;
-using System;
 using System.Threading.Tasks;
 
 namespace Be.Fluent.Tests.Describe_With_Generics
 {
     [TestClass]
-    public class Describe_WaitAndActExtensions
+    public class Describe_TaskofActExtensions
     {
         [TestMethod]
         public async Task It_ShouldPerformAction_AsynchronousTarget()
@@ -16,7 +15,7 @@ namespace Be.Fluent.Tests.Describe_With_Generics
             var expected = "1";
             string container = null;
 
-            var result = await source.WaitAndAct(item => Task.Run(() => container = item.ToString()));
+            var result = await source.Act(item => Task.Run(() => container = item.ToString()));
 
             container.Should().BeEquivalentTo(expected);
         }
@@ -28,7 +27,7 @@ namespace Be.Fluent.Tests.Describe_With_Generics
             var expected = "1.0";
             string container = null;
 
-            var result = await source.WaitAndAct(async (s, p1) => await Task.Run(() => container = $"{s}.{p1}"), 0);
+            var result = await source.Act(async (s, p1) => await Task.Run(() => container = $"{s}.{p1}"), 0);
 
             container.Should().BeEquivalentTo(expected);
             result.Should().Be(await source);
@@ -41,7 +40,7 @@ namespace Be.Fluent.Tests.Describe_With_Generics
             var expected = "1.0.0";
             string container = null;
 
-            var result = await source.WaitAndAct(async (s, p1, p2) => await Task.Run(() => container = $"{s}.{p1}.{p2}"), 0, 0);
+            var result = await source.Act(async (s, p1, p2) => await Task.Run(() => container = $"{s}.{p1}.{p2}"), 0, 0);
 
             container.Should().BeEquivalentTo(expected);
             result.Should().Be(await source);
@@ -54,7 +53,7 @@ namespace Be.Fluent.Tests.Describe_With_Generics
             var expected = "1.0.0.0";
             string container = null;
 
-            var result = await source.WaitAndAct(async (s, p1, p2, p3) => await Task.Run(() => container = $"{s}.{p1}.{p2}.{p3}"), 0, 0, 0);
+            var result = await source.Act(async (s, p1, p2, p3) => await Task.Run(() => container = $"{s}.{p1}.{p2}.{p3}"), 0, 0, 0);
 
             container.Should().BeEquivalentTo(expected);
             result.Should().Be(await source);
@@ -67,7 +66,7 @@ namespace Be.Fluent.Tests.Describe_With_Generics
             var expected = "1";
             string container = null;
 
-            var result = await source.WaitAndAct(s => container = s.ToString());
+            var result = await source.Act(s => container = s.ToString());
 
             container.Should().BeEquivalentTo(expected);
             result.Should().Be(await source);
@@ -80,7 +79,7 @@ namespace Be.Fluent.Tests.Describe_With_Generics
             var expected = "1.0";
             string container = null;
 
-            var result = await source.WaitAndAct((s, p1) => container = $"{s}.{p1}", 0);
+            var result = await source.Act((s, p1) => container = $"{s}.{p1}", 0);
 
             container.Should().BeEquivalentTo(expected);
             result.Should().Be(await source);
@@ -93,7 +92,7 @@ namespace Be.Fluent.Tests.Describe_With_Generics
             var expected = "1.0.0";
             string container = null;
 
-            var result = await source.WaitAndAct((s, p1, p2) => container = $"{s}.{p1}.{p2}", 0, 0);
+            var result = await source.Act((s, p1, p2) => container = $"{s}.{p1}.{p2}", 0, 0);
 
             container.Should().BeEquivalentTo(expected);
             result.Should().Be(await source);
@@ -106,7 +105,7 @@ namespace Be.Fluent.Tests.Describe_With_Generics
             var expected = "1.0.0.0";
             string container = null;
 
-            var result = await source.WaitAndAct((s, p1, p2, p3) => container = $"{s}.{p1}.{p2}.{p3}", 0, 0, 0);
+            var result = await source.Act((s, p1, p2, p3) => container = $"{s}.{p1}.{p2}.{p3}", 0, 0, 0);
 
             container.Should().BeEquivalentTo(expected);
             result.Should().Be(await source);

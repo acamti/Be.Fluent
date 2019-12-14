@@ -14,11 +14,11 @@ namespace Acamti.Be.Fluent.With.IEnumerables
                 .Concat(item.ToEnumerable());
         }
 
-        public static IEnumerable<TTSource> Add<TTSource>(this IEnumerable<TTSource> source, Func<TTSource> item)
+        public static IEnumerable<TTSource> Add<TTSource>(this IEnumerable<TTSource> source, Func<TTSource> funcOfitem)
         {
             return source
                 .Safe()
-                .Concat(item.Invoke().ToEnumerable());
+                .Concat(funcOfitem().ToEnumerable());
         }
     }
 }

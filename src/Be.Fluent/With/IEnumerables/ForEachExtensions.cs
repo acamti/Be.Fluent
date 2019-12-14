@@ -10,7 +10,7 @@ namespace Acamti.Be.Fluent.With.IEnumerables
         {
             foreach (var item in source.Safe())
             {
-                action.Invoke(item);
+                action(item);
             }
         }
 
@@ -18,7 +18,7 @@ namespace Acamti.Be.Fluent.With.IEnumerables
         {
             foreach (var item in source.Safe())
             {
-                await action.Invoke(item);
+                await action(item);
             }
         }
     }
