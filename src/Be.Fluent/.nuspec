@@ -2,14 +2,14 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Acamti.Be.Fluent</id>
-    <version>2.0.0</version>
+    <version>2.0.1</version>
     <title>Acamti.Be.Fluent</title>
     <authors>Manel Mayer</authors>
     <owners>ACAM Services et Conseils TI</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://github.com/acamti/Be.Fluent/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://www.nuget.org/packages/Acamti.Be.Fluent/</projectUrl>
-    <description>Provides a library of extensihelp be more fluent when developping</description>
+    <description>Provides a library of extensions to help be more fluent when developping</description>
     <copyright>ACAM Services et Conseils TI</copyright>
     <tags>Extensions, Helper, Fluent, Functional</tags>
     <repository type="git" url="https://github.com/acamti/Be.Fluent" />
