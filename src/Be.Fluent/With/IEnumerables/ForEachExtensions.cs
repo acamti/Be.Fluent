@@ -9,7 +9,7 @@ namespace Acamti.Be.Fluent.With.IEnumerables
     {
         public static void ForEach<TSource>(this IEnumerable<TSource> source, Action<TSource> action)
         {
-            foreach (var item in source.Safe().Clone())
+            foreach (var item in source.Safe())
             {
                 action(item);
             }
@@ -17,7 +17,7 @@ namespace Acamti.Be.Fluent.With.IEnumerables
 
         public static async Task ForEachAsync<TSource>(this IEnumerable<TSource> source, Func<TSource, Task> action)
         {
-            foreach (var item in source.Safe().Clone())
+            foreach (var item in source.Safe())
             {
                 await action(item);
             }
