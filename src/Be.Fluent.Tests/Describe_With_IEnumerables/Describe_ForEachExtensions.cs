@@ -28,7 +28,43 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
             IEnumerable<int> initialList = new[] { 1, 2, 3 };
             List<bool> container = new List<bool>();
 
-            await initialList.ForEach(async item => await Task.Run(() => container.Add(item == 2)));
+            await initialList.ForEachAsync(async item => await Task.Run(() => container.Add(item == 2)));
+
+            container.Should().BeEquivalentTo(expected);
+        }
+
+        [TestMethod]
+        public async Task It_Should_ProduceDesireAction_WhenActionIsSync()
+        {
+            IEnumerable<bool> expected = new[] { false, true, false };
+            Task<IEnumerable<int>> initialList = Task.FromResult(new[] { 1, 2, 3 } as IEnumerable<int>);
+            List<bool> container = new List<bool>();
+
+            await initialList.AwaitAndForEachAsync(item => container.Add(item == 2));
+
+            container.Should().BeEquivalentTo(expected);
+        }
+
+        [TestMethod]
+        public async Task It_Should_ProduceDesireAction_WhenSourceIsAsync_AndActionIsSync()
+        {
+            IEnumerable<bool> expected = new[] { false, true, false };
+            Task<IEnumerable<int>> initialList = Task.FromResult(new[] { 1, 2, 3 } as IEnumerable<int>);
+            List<bool> container = new List<bool>();
+
+            await initialList.AwaitAndForEachAsync(item => container.Add(item == 2));
+
+            container.Should().BeEquivalentTo(expected);
+        }
+
+        [TestMethod]
+        public async Task It_Should_ProduceDesireAction_WhenSourceIsAsync_AndActionIsASync()
+        {
+            IEnumerable<bool> expected = new[] { false, true, false };
+            Task<IEnumerable<int>> initialList = Task.FromResult(new[] { 1, 2, 3 } as IEnumerable<int>);
+            List<bool> container = new List<bool>();
+
+            await initialList.AwaitAndForEachAsync(async item => await Task.Run(() => container.Add(item == 2)));
 
             container.Should().BeEquivalentTo(expected);
         }

@@ -15,12 +15,22 @@ namespace Acamti.Be.Fluent.With.IEnumerables
             }
         }
 
-        public static async Task ForEach<TSource>(this IEnumerable<TSource> source, Func<TSource, Task> action)
+        public static async Task ForEachAsync<TSource>(this IEnumerable<TSource> source, Func<TSource, Task> action)
         {
             foreach (var item in source.Safe().Clone())
             {
                 await action(item);
             }
+        }
+
+        public static async Task AwaitAndForEachAsync<TSource>(this Task<IEnumerable<TSource>> source, Action<TSource> action)
+        {
+            (await source).ForEach(action);
+        }
+
+        public static async Task AwaitAndForEachAsync<TSource>(this Task<IEnumerable<TSource>> source, Func<TSource, Task> action)
+        {
+            await (await source).ForEachAsync(action);
         }
     }
 }

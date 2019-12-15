@@ -13,7 +13,7 @@ namespace Acamti.Be.Fluent.With.Generics
             return source;
         }
 
-        public static async Task<TSource> Act<TSource>(this TSource source, Func<TSource, Task> action)
+        public static async Task<TSource> ActAsync<TSource>(this TSource source, Func<TSource, Task> action)
         {
             await action(source.Clone());
 
@@ -27,7 +27,7 @@ namespace Acamti.Be.Fluent.With.Generics
             return source;
         }
 
-        public static async Task<TSource> Act<TSource, TParam1>(this TSource source, Func<TSource, TParam1, Task> action, TParam1 p1)
+        public static async Task<TSource> ActAsync<TSource, TParam1>(this TSource source, Func<TSource, TParam1, Task> action, TParam1 p1)
         {
             await action(source.Clone(), p1);
 
@@ -41,7 +41,7 @@ namespace Acamti.Be.Fluent.With.Generics
             return source;
         }
 
-        public static async Task<TSource> Act<TSource, TParam1, TParam2>(this TSource source, Func<TSource, TParam1, TParam2, Task> action, TParam1 p1, TParam2 p2)
+        public static async Task<TSource> ActAsync<TSource, TParam1, TParam2>(this TSource source, Func<TSource, TParam1, TParam2, Task> action, TParam1 p1, TParam2 p2)
         {
             await action(source.Clone(), p1, p2);
 
@@ -55,11 +55,39 @@ namespace Acamti.Be.Fluent.With.Generics
             return source;
         }
 
-        public static async Task<TSource> Act<TSource, TParam1, TParam2, TParam3>(this TSource source, Func<TSource, TParam1, TParam2, TParam3, Task> action, TParam1 p1, TParam2 p2, TParam3 p3)
+        public static async Task<TSource> ActAsync<TSource, TParam1, TParam2, TParam3>(this TSource source, Func<TSource, TParam1, TParam2, TParam3, Task> action, TParam1 p1, TParam2 p2, TParam3 p3)
         {
             await action(source.Clone(), p1, p2, p3);
 
             return source;
+        }
+
+        public static async Task<TSource> AwaitAndActAsync<TSource>(this Task<TSource> source, Action<TSource> action)
+        {
+            (await source).Act(action);
+
+            return await source;
+        }
+
+        public static async Task<TSource> AwaitAndActAsync<TSource, TParam1>(this Task<TSource> source, Action<TSource, TParam1> action, TParam1 p1)
+        {
+            (await source).Act(action, p1);
+
+            return await source;
+        }
+
+        public static async Task<TSource> AwaitAndActAsync<TSource, TParam1, TParam2>(this Task<TSource> source, Action<TSource, TParam1, TParam2> action, TParam1 p1, TParam2 p2)
+        {
+            (await source).Act(action, p1, p2);
+
+            return await source;
+        }
+
+        public static async Task<TSource> AwaitAndActAsync<TSource, TParam1, TParam2, TParam3>(this Task<TSource> source, Action<TSource, TParam1, TParam2, TParam3> action, TParam1 p1, TParam2 p2, TParam3 p3)
+        {
+            (await source).Act(action, p1, p2, p3);
+
+            return await source;
         }
     }
 }
