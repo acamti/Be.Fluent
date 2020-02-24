@@ -12,9 +12,9 @@ namespace Acamti.Be.Fluent.With.IEnumerables
                 .Safe()
                 .Concat(item.ToEnumerable());
 
-        public static IEnumerable<TTSource> Add<TTSource>(this IEnumerable<TTSource> source, Func<TTSource> funcOfitem) =>
+        public static IEnumerable<TTSource> Add<TTSource>(this IEnumerable<TTSource> source, Func<TTSource> funcOfItem) =>
             source
                 .Safe()
-                .Concat(funcOfitem().ToEnumerable());
+                .Concat(funcOfItem().ToEnumerable());
     }
 }

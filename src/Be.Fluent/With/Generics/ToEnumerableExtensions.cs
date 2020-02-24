@@ -4,9 +4,7 @@ namespace Acamti.Be.Fluent.With.Generics
 {
     public static class ToEnumerableExtensions
     {
-        public static IEnumerable<TSource> ToEnumerable<TSource>(this TSource source)
-        {
-            return new[] {source.Clone()};
-        }
+        public static IEnumerable<TSource> ToEnumerable<TSource>(this TSource source) =>
+            new[] {source.Clone()};
     }
 }

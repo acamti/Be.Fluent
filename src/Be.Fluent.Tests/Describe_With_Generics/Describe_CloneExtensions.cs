@@ -11,7 +11,7 @@ namespace Be.Fluent.Tests.Describe_With_Generics
         [TestMethod]
         public void It_ShouldReturnAnObjectIdentical()
         {
-            var objToClone = new Obj1 {s = "some string", d = DateTime.Now, o = new Obj2 {i = 4, b = true}};
+            var objToClone = new Obj1 {S = "some string", D = DateTime.Now, O = new Obj2 {I = 4, B = true}};
 
             Obj1 result = objToClone.Clone();
 
@@ -21,26 +21,26 @@ namespace Be.Fluent.Tests.Describe_With_Generics
         [TestMethod]
         public void It_ShouldProduceAnImmutableObject()
         {
-            var objToClone = new Obj1 {s = "some string", d = DateTime.Now, o = new Obj2 {i = 4, b = true}};
+            var objToClone = new Obj1 {S = "some string", D = DateTime.Now, O = new Obj2 {I = 4, B = true}};
 
             Obj1 result = objToClone.Clone();
 
-            objToClone.o.i = 5;
+            objToClone.O.I = 5;
 
             result.Should().NotBeEquivalentTo(objToClone);
         }
 
         private class Obj1
         {
-            public string s { get; set; }
-            public DateTime d { get; set; }
-            public Obj2 o { get; set; }
+            public string S { get; set; }
+            public DateTime D { get; set; }
+            public Obj2 O { get; set; }
         }
 
         private class Obj2
         {
-            public int i { get; set; }
-            public bool b { get; set; }
+            public int I { get; set; }
+            public bool B { get; set; }
         }
     }
 }
