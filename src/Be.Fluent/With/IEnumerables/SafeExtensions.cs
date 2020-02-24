@@ -5,9 +5,7 @@ namespace Acamti.Be.Fluent.With.IEnumerables
 {
     public static class SafeExtensions
     {
-        public static IEnumerable<TSource> Safe<TSource>(this IEnumerable<TSource> source)
-        {
-            return source ?? Enumerable.Empty<TSource>();
-        }
+        public static IEnumerable<TSource> Safe<TSource>(this IEnumerable<TSource> source) => 
+            source ?? Enumerable.Empty<TSource>();
     }
 }

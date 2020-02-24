@@ -6,7 +6,7 @@ namespace Acamti.Be.Fluent.With.Generics
     {
         public static IEnumerable<TSource> ToEnumerable<TSource>(this TSource source)
         {
-            return new[] { source.Clone() };
+            return new[] {source.Clone()};
         }
     }
 }

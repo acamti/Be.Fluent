@@ -1,8 +1,8 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
+using System.Linq;
 using Acamti.Be.Fluent.With.IEnumerables;
 using FluentAssertions;
-using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Be.Fluent.Tests.Describe_With_IEnumerables
 {
@@ -12,11 +12,11 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
         [TestMethod]
         public void It_Should_ReturnSameIEnumerable_WhenAlreadyInitialized()
         {
-            IEnumerable<string> expected = new[] { "someItem" };
+            IEnumerable<string> expected = new[] {"someItem"};
 
-            var initialList = new[] { "someItem" };
+            var initialList = new[] {"someItem"};
 
-            var result = initialList.Safe();
+            IEnumerable<string> result = initialList.Safe();
 
             result.Should().BeEquivalentTo(expected);
         }
@@ -28,7 +28,7 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
 
             IEnumerable<string> initialList = null;
 
-            var result = initialList.Safe();
+            IEnumerable<string> result = initialList.Safe();
 
             result.Should().BeEquivalentTo(expected);
         }

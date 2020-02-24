@@ -1,8 +1,8 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Linq;
 using Acamti.Be.Fluent.With.IEnumerables;
 using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Be.Fluent.Tests.Describe_With_IEnumerables
 {
@@ -12,11 +12,11 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
         [TestMethod]
         public void It_Should_ReturnIEnumerable_WithAddedItem()
         {
-            IEnumerable<string> expected = new[] { "newItem" };
+            IEnumerable<string> expected = new[] {"newItem"};
 
-            var initialList = Enumerable.Empty<string>();
+            IEnumerable<string> initialList = Enumerable.Empty<string>();
 
-            var result = initialList.Add("newItem");
+            IEnumerable<string> result = initialList.Add("newItem");
 
             result.Should().BeEquivalentTo(expected);
         }
@@ -24,11 +24,11 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
         [TestMethod]
         public void It_Should_ReturnIEnumerable_WithAddedItem_WhenNotEmpty()
         {
-            IEnumerable<string> expected = new[] { "oldItem", "newItem" };
+            IEnumerable<string> expected = new[] {"oldItem", "newItem"};
 
-            var initialList = new[] { "oldItem" };
+            var initialList = new[] {"oldItem"};
 
-            var result = initialList.Add("newItem");
+            IEnumerable<string> result = initialList.Add("newItem");
 
             result.Should().BeEquivalentTo(expected);
         }
@@ -36,11 +36,11 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
         [TestMethod]
         public void It_Should_ReturnIEnumerable_WithAddedItemFromPredicate()
         {
-            IEnumerable<string> expected = new[] { "newItem" };
+            IEnumerable<string> expected = new[] {"newItem"};
 
-            var initialList = Enumerable.Empty<string>();
+            IEnumerable<string> initialList = Enumerable.Empty<string>();
 
-            var result = initialList.Add(() => "newItem");
+            IEnumerable<string> result = initialList.Add(() => "newItem");
 
             result.Should().BeEquivalentTo(expected);
         }
@@ -48,11 +48,11 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
         [TestMethod]
         public void It_Should_ReturnIEnumerable_WithAddedItemFromPredicate_WhenNotEmpty()
         {
-            IEnumerable<string> expected = new[] { "oldItem", "newItem" };
+            IEnumerable<string> expected = new[] {"oldItem", "newItem"};
 
-            var initialList = new[] { "oldItem" };
+            var initialList = new[] {"oldItem"};
 
-            var result = initialList.Add(() => "newItem");
+            IEnumerable<string> result = initialList.Add(() => "newItem");
 
             result.Should().BeEquivalentTo(expected);
         }
@@ -60,11 +60,11 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
         [TestMethod]
         public void It_Should_ReturnIEnumerable_WithAddedItem_WhenSourceIsNull()
         {
-            IEnumerable<string> expected = new[] { "newItem" };
+            IEnumerable<string> expected = new[] {"newItem"};
 
             IEnumerable<string> initialList = null;
 
-            var result = initialList.Add("newItem");
+            IEnumerable<string> result = initialList.Add("newItem");
 
             result.Should().BeEquivalentTo(expected);
         }
@@ -72,11 +72,11 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
         [TestMethod]
         public void It_Should_ReturnIEnumerable_WithAddedItemFromPredicate_WhenSourceIsNull()
         {
-            IEnumerable<string> expected = new[] { "newItem" };
+            IEnumerable<string> expected = new[] {"newItem"};
 
             IEnumerable<string> initialList = null;
 
-            var result = initialList.Add(() => "newItem");
+            IEnumerable<string> result = initialList.Add(() => "newItem");
 
             result.Should().BeEquivalentTo(expected);
         }

@@ -5,7 +5,6 @@ namespace Acamti.Be.Fluent.With.Generics
 {
     public static class ActExtensions
     {
-
         public static TSource Act<TSource>(this TSource source, Action<TSource> action)
         {
             action(source);

@@ -1,6 +1,7 @@
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using FluentAssertions;
+using System.Collections.Generic;
 using Acamti.Be.Fluent.With.Generics;
+using FluentAssertions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Be.Fluent.Tests.Describe_With_Generics
 {
@@ -10,8 +11,8 @@ namespace Be.Fluent.Tests.Describe_With_Generics
         [TestMethod]
         public void It_ShouldReturnAnEnumerable_WithAnySingleObject()
         {
-            var expected = new[] { "some item" };
-            var result = "some item".ToEnumerable();
+            var expected = new[] {"some item"};
+            IEnumerable<string> result = "some item".ToEnumerable();
 
             result.Should().BeEquivalentTo(expected);
         }
@@ -19,10 +20,10 @@ namespace Be.Fluent.Tests.Describe_With_Generics
         [TestMethod]
         public void It_ShouldReturnAnEnumerable_WithAnyEnumerableObject()
         {
-            var input = new[] { "string 1", "string 2" };
-            object[] expected = { new[] { "string 1", "string 2" } };
+            var input = new[] {"string 1", "string 2"};
+            object[] expected = {new[] {"string 1", "string 2"}};
 
-            var result = input.ToEnumerable();
+            IEnumerable<string[]> result = input.ToEnumerable();
 
             result.Should().BeEquivalentTo(expected);
         }
