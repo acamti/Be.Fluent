@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Acamti.Be.Fluent</id>
-    <version>3.0.0-beta.6</version>
+    <version>3.0.0-beta.7</version>
     <title>Acamti.Be.Fluent</title>
     <authors>Manuel Mayer</authors>
     <owners>ACAM Services et Conseils TI</owners>
@@ -15,7 +15,7 @@
     <tags>Extensions, Helper, Fluent, Functional</tags>
     <repository type="git" url="https://github.com/acamti/Be.Fluent" />
     <dependencies>
-      <dependency id="System.Text.Json" version="4.7.0" />
+      <dependency id="System.Text.Json" version="4.7.1" />
     </dependencies>
   </metadata>
 </package>
