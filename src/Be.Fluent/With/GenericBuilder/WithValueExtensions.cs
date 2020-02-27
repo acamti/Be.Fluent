@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.JsonPatch;
 
 namespace Acamti.Be.Fluent.With.GenericBuilder
 {
-    public static class WithPropertyExtensions
+    public static class WithValueExtensions
     {
-        public static GenericBuilder<T> WithProperty<T, TValue>(
+        public static GenericBuilder<T> WithValue<T, TValue>(
             this GenericBuilder<T> builder,
             Expression<Func<T, TValue>> property,
             TValue value

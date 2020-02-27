@@ -15,7 +15,7 @@ namespace Be.Fluent.Tests.Describe_With_GenericBuilder
             var expected = new Operation<TestHelperClass>("replace", "/prop1", null, "new value");
 
             var sut = new GenericBuilder<TestHelperClass>(new TestHelperClass());
-            sut.WithProperty(x => x.Prop1, "new value");
+            sut.WithValue(x => x.Prop1, "new value");
 
             ((IGenericBuilder<TestHelperClass>) sut).Patches.Should().BeEquivalentTo(expected);
         }
@@ -24,7 +24,7 @@ namespace Be.Fluent.Tests.Describe_With_GenericBuilder
         public void It_ShouldNotAddPropertyToBuilderPatches_WhenPropIsInvalid()
         {
             var sut = new GenericBuilder<TestHelperClass>(new TestHelperClass());
-            sut.WithProperty(x => x.Prop2 == 54, false);
+            sut.WithValue(x => x.Prop2 == 54, false);
 
             ((IGenericBuilder<TestHelperClass>) sut).Patches.Should().BeEmpty();
         }
@@ -41,8 +41,8 @@ namespace Be.Fluent.Tests.Describe_With_GenericBuilder
             var sut = new GenericBuilder<TestHelperClass>(new TestHelperClass());
 
             sut
-                .WithProperty(x => x.Prop1, "some value")
-                .WithProperty(x => x.Prop3, true);
+                .WithValue(x => x.Prop1, "some value")
+                .WithValue(x => x.Prop3, true);
 
             sut.Build().Should().BeEquivalentTo(expected);
         }
@@ -57,8 +57,8 @@ namespace Be.Fluent.Tests.Describe_With_GenericBuilder
 
             var sut = new GenericBuilder<TestHelperClass>(new TestHelperClass {Prop2 = 54});
 
-            sut.WithProperty(x => x.Prop1, "some value")
-                .WithProperty(x => x.Prop3, true)
+            sut.WithValue(x => x.Prop1, "some value")
+                .WithValue(x => x.Prop3, true)
                 .Reset();
 
             sut.Build().Should().BeEquivalentTo(expected);

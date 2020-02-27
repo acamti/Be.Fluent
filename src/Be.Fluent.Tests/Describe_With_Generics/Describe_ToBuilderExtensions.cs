@@ -1,4 +1,6 @@
-﻿using Acamti.Be.Fluent.Builders.Generic;
+﻿using System;
+using System.Threading.Tasks;
+using Acamti.Be.Fluent.Builders.Generic;
 using Acamti.Be.Fluent.With.Generics;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -31,18 +33,46 @@ namespace Be.Fluent.Tests.Describe_With_Generics
         }
 
         [TestMethod]
-        public void It_ShouldCreateEmptyBuilderOutOfModel()
+        public void It_ShouldCreateBuilderOutOfFuncOfModel()
         {
-            var myClass = new TestHelperClass
+            Func<TestHelperClass> myClassGetter = () => new TestHelperClass
             {
                 Prop1 = "some value",
                 Prop2 = 54,
                 Prop3 = true
             };
 
-            var expected = new TestHelperClass();
+            var expected = new TestHelperClass
+            {
+                Prop1 = "some value",
+                Prop2 = 54,
+                Prop3 = true
+            };
 
-            GenericBuilder<TestHelperClass> result = myClass.ToEmptyBuilder();
+            GenericBuilder<TestHelperClass> result = myClassGetter.ToBuilder();
+
+            result.Build().Should().BeEquivalentTo(expected);
+        }
+
+        [TestMethod]
+        public async Task It_ShouldCreateBuilderOutOfAsyncFuncOfModel()
+        {
+            Func<Task<TestHelperClass>> myClassGetter = () => Task.FromResult(new TestHelperClass
+                {
+                    Prop1 = "some value",
+                    Prop2 = 54,
+                    Prop3 = true
+                }
+            );
+
+            var expected = new TestHelperClass
+            {
+                Prop1 = "some value",
+                Prop2 = 54,
+                Prop3 = true
+            };
+
+            GenericBuilder<TestHelperClass> result = await myClassGetter.ToBuilderAsync();
 
             result.Build().Should().BeEquivalentTo(expected);
         }
