@@ -3,7 +3,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
   <metadata>
     <id>Acamti.Be.Fluent</id>
-    <version>3.0.0-beta.7</version>
+    <version>3.0.0</version>
     <title>Acamti.Be.Fluent</title>
     <authors>Manuel Mayer</authors>
     <owners>ACAM Services et Conseils TI</owners>
