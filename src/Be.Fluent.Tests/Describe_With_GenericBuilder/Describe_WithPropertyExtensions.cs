@@ -12,7 +12,7 @@ namespace Be.Fluent.Tests.Describe_With_GenericBuilder
         [TestMethod]
         public void It_ShouldAddPropertyToBuilderPatches()
         {
-            var expected = new Operation<TestHelperClass>("replace", "/prop1", null, "new value");
+            var expected = new Operation<TestHelperClass>("replace", "/Prop1", null, "new value");
 
             var sut = new GenericBuilder<TestHelperClass>(new TestHelperClass());
             sut.WithValue(x => x.Prop1, "new value");

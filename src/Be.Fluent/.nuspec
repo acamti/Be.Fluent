@@ -10,13 +10,13 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <licenseUrl>https://github.com/acamti/Be.Fluent/blob/master/LICENSE</licenseUrl>
     <projectUrl>https://www.nuget.org/packages/Acamti.Be.Fluent/</projectUrl>
-    <description>Provides a library of extensions to help be more fluent when developing</description>
+    <description>Provides a library of extensions helping to be more fluent when developing</description>
     <copyright>ACAM Services et Conseils TI</copyright>
-    <tags>Extensions, Helper, Fluent, Functional</tags>
+    <tags>Extensions, Helper, Fluent, Functional, builder</tags>
     <repository type="git" url="https://github.com/acamti/Be.Fluent" />
     <dependencies>
       <dependency id="System.Text.Json" version="4.7.1" />
-      <dependency id="Microsoft.AspNetCore.JsonPatch" version="1.1.0" />
+      <dependency id="Microsoft.AspNetCore.JsonPatch" version="3.1.2" />
     </dependencies>
   </metadata>
 </package>
