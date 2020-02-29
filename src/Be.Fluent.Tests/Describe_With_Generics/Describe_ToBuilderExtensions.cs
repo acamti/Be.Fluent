@@ -27,7 +27,7 @@ namespace Be.Fluent.Tests.Describe_With_Generics
                 Prop3 = true
             };
 
-            GenericBuilder<TestHelperClass> result = myClass.ToBuilder();
+            GenericBuilder<TestHelperClass> result = myClass.AsBuilder();
 
             result.Build().Should().BeEquivalentTo(expected);
         }
@@ -49,7 +49,7 @@ namespace Be.Fluent.Tests.Describe_With_Generics
                 Prop3 = true
             };
 
-            GenericBuilder<TestHelperClass> result = myClassGetter.ToBuilder();
+            GenericBuilder<TestHelperClass> result = myClassGetter.AsBuilder();
 
             result.Build().Should().BeEquivalentTo(expected);
         }
@@ -72,7 +72,30 @@ namespace Be.Fluent.Tests.Describe_With_Generics
                 Prop3 = true
             };
 
-            GenericBuilder<TestHelperClass> result = await myClassGetter.ToBuilderAsync();
+            GenericBuilder<TestHelperClass> result = await myClassGetter.AsBuilderAsync();
+
+            result.Build().Should().BeEquivalentTo(expected);
+        }
+
+        [TestMethod]
+        public async Task It_ShouldCreateBuilderOutOfAsyncModel()
+        {
+            Task<TestHelperClass> myClassGetter = Task.FromResult(new TestHelperClass
+                {
+                    Prop1 = "some value",
+                    Prop2 = 54,
+                    Prop3 = true
+                }
+            );
+
+            var expected = new TestHelperClass
+            {
+                Prop1 = "some value",
+                Prop2 = 54,
+                Prop3 = true
+            };
+
+            GenericBuilder<TestHelperClass> result = await myClassGetter.AsBuilderAsync();
 
             result.Build().Should().BeEquivalentTo(expected);
         }
