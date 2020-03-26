@@ -8,11 +8,10 @@ namespace Acamti.Be.Fluent.With.GenericBuilder
 {
     public static class WithValueExtensions
     {
-        public static GenericBuilder<T> WithValue<T, TValue>(
-            this GenericBuilder<T> builder,
-            Expression<Func<T, TValue>> property,
-            TValue value
-        ) where T : class
+        public static GenericBuilder<T> WithValue<T, TValue>(this GenericBuilder<T> builder,
+                                                             Expression<Func<T, TValue>> property,
+                                                             TValue value)
+            where T : class
         {
             if (!IsValidProperty(property)) return builder;
 

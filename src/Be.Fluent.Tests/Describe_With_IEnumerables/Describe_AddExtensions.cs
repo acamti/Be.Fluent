@@ -12,7 +12,7 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
         [TestMethod]
         public void It_Should_ReturnIEnumerable_WithAddedItem()
         {
-            IEnumerable<string> expected = new[] {"newItem"};
+            IEnumerable<string> expected = new[] { "newItem" };
 
             IEnumerable<string> initialList = Enumerable.Empty<string>();
 
@@ -24,9 +24,9 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
         [TestMethod]
         public void It_Should_ReturnIEnumerable_WithAddedItem_WhenNotEmpty()
         {
-            IEnumerable<string> expected = new[] {"oldItem", "newItem"};
+            IEnumerable<string> expected = new[] { "oldItem", "newItem" };
 
-            var initialList = new[] {"oldItem"};
+            var initialList = new[] { "oldItem" };
 
             IEnumerable<string> result = initialList.Add("newItem");
 
@@ -36,7 +36,7 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
         [TestMethod]
         public void It_Should_ReturnIEnumerable_WithAddedItemFromPredicate()
         {
-            IEnumerable<string> expected = new[] {"newItem"};
+            IEnumerable<string> expected = new[] { "newItem" };
 
             IEnumerable<string> initialList = Enumerable.Empty<string>();
 
@@ -48,9 +48,9 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
         [TestMethod]
         public void It_Should_ReturnIEnumerable_WithAddedItemFromPredicate_WhenNotEmpty()
         {
-            IEnumerable<string> expected = new[] {"oldItem", "newItem"};
+            IEnumerable<string> expected = new[] { "oldItem", "newItem" };
 
-            var initialList = new[] {"oldItem"};
+            var initialList = new[] { "oldItem" };
 
             IEnumerable<string> result = initialList.Add(() => "newItem");
 
@@ -60,7 +60,7 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
         [TestMethod]
         public void It_Should_ReturnIEnumerable_WithAddedItem_WhenSourceIsNull()
         {
-            IEnumerable<string> expected = new[] {"newItem"};
+            IEnumerable<string> expected = new[] { "newItem" };
 
             IEnumerable<string> initialList = null;
 
@@ -72,7 +72,7 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
         [TestMethod]
         public void It_Should_ReturnIEnumerable_WithAddedItemFromPredicate_WhenSourceIsNull()
         {
-            IEnumerable<string> expected = new[] {"newItem"};
+            IEnumerable<string> expected = new[] { "newItem" };
 
             IEnumerable<string> initialList = null;
 

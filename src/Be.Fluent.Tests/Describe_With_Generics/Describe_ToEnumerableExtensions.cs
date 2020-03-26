@@ -11,7 +11,7 @@ namespace Be.Fluent.Tests.Describe_With_Generics
         [TestMethod]
         public void It_ShouldReturnAnEnumerable_WithAnySingleObject()
         {
-            var expected = new[] {"some item"};
+            var expected = new[] { "some item" };
             IEnumerable<string> result = "some item".ToEnumerable();
 
             result.Should().BeEquivalentTo(expected);
@@ -20,8 +20,8 @@ namespace Be.Fluent.Tests.Describe_With_Generics
         [TestMethod]
         public void It_ShouldReturnAnEnumerable_WithAnyEnumerableObject()
         {
-            var input = new[] {"string 1", "string 2"};
-            object[] expected = {new[] {"string 1", "string 2"}};
+            var input = new[] { "string 1", "string 2" };
+            object[] expected = { new[] { "string 1", "string 2" } };
 
             IEnumerable<string[]> result = input.ToEnumerable();
 

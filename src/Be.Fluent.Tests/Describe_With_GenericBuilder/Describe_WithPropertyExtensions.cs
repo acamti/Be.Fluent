@@ -50,12 +50,9 @@ namespace Be.Fluent.Tests.Describe_With_GenericBuilder
         [TestMethod]
         public void It_ShouldBuildAfterAddingValuesAndReset()
         {
-            var expected = new TestHelperClass
-            {
-                Prop2 = 54
-            };
+            var expected = new TestHelperClass { Prop2 = 54 };
 
-            var sut = new GenericBuilder<TestHelperClass>(new TestHelperClass {Prop2 = 54});
+            var sut = new GenericBuilder<TestHelperClass>(new TestHelperClass { Prop2 = 54 });
 
             sut.WithValue(x => x.Prop1, "some value")
                 .WithValue(x => x.Prop3, true)

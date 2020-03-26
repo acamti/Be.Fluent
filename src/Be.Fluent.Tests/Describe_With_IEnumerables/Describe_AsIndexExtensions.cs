@@ -11,9 +11,9 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
         [TestMethod]
         public void It_Should_ReturnListOfSameSource_WithIndexedKey()
         {
-            var expected = new[] {new KeyValuePair<int, string>(0, "someItem"), new KeyValuePair<int, string>(1, "someOtherItem")};
+            var expected = new[] { new KeyValuePair<int, string>(0, "someItem"), new KeyValuePair<int, string>(1, "someOtherItem") };
 
-            var initialList = new[] {"someItem", "someOtherItem"};
+            var initialList = new[] { "someItem", "someOtherItem" };
 
             IEnumerable<KeyValuePair<int, string>> result = initialList.AsIndex();
 

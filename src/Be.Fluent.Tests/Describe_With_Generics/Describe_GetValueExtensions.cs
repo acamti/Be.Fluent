@@ -12,7 +12,8 @@ namespace Be.Fluent.Tests.Describe_With_Generics
         [TestMethod]
         public async Task It_ShouldReturnPropertyValueOfObject()
         {
-            Task<TestHelperClass> model = Task.FromResult(new TestHelperClass
+            Task<TestHelperClass> model = Task.FromResult(
+                new TestHelperClass
                 {
                     Prop1 = "some value",
                     Prop2 = 43,

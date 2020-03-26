@@ -12,9 +12,9 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
         [TestMethod]
         public void It_Should_ReturnSameIEnumerable_WhenAlreadyInitialized()
         {
-            IEnumerable<string> expected = new[] {"someItem"};
+            IEnumerable<string> expected = new[] { "someItem" };
 
-            var initialList = new[] {"someItem"};
+            var initialList = new[] { "someItem" };
 
             IEnumerable<string> result = initialList.Safe();
 
