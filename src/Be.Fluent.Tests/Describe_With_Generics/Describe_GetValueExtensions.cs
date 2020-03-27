@@ -12,7 +12,8 @@ namespace Be.Fluent.Tests.Describe_With_Generics
         [TestMethod]
         public async Task It_ShouldReturnPropertyValueOfObject()
         {
-            Task<TestHelperClass> model = Task.FromResult(new TestHelperClass
+            Task<TestHelperClass> model = Task.FromResult(
+                new TestHelperClass
                 {
                     Prop1 = "some value",
                     Prop2 = 43,
@@ -22,7 +23,7 @@ namespace Be.Fluent.Tests.Describe_With_Generics
 
             var expected = 43;
 
-            int result = await model.GetValueAsync(m => m.Prop2);
+            int result = await model.WithValueAsync(m => m.Prop2);
 
             result.Should().Be(expected);
         }
@@ -30,8 +31,8 @@ namespace Be.Fluent.Tests.Describe_With_Generics
         [TestMethod]
         public async Task It_ShouldReturnPropertyValueOfFunc()
         {
-            Func<Task<TestHelperClass>> getModel = () => Task.Run(
-                () => new TestHelperClass
+            Func<Task<TestHelperClass>> getModel = () => Task.FromResult(
+                new TestHelperClass
                 {
                     Prop1 = "some value",
                     Prop2 = 43,
@@ -41,7 +42,7 @@ namespace Be.Fluent.Tests.Describe_With_Generics
 
             var expected = 43;
 
-            int result = await getModel.GetValueAsync(m => m.Prop2);
+            int result = await getModel.WithValueAsync(m => m.Prop2);
 
             result.Should().Be(expected);
         }

@@ -8,13 +8,13 @@ namespace Acamti.Be.Fluent.With.GenericBuilder
 {
     public static class WithValueExtensions
     {
-        public static GenericBuilder<T> WithValue<T, TValue>(
-            this GenericBuilder<T> builder,
-            Expression<Func<T, TValue>> property,
-            TValue value
-        ) where T : class
+        public static GenericBuilder<T> WithValue<T, TValue>(this GenericBuilder<T> builder,
+                                                             Expression<Func<T, TValue>> property,
+                                                             TValue value)
+            where T : class
         {
-            if (!IsValidProperty(property)) return builder;
+            if (!IsValidProperty(property))
+                return builder;
 
             var doc = new JsonPatchDocument<T>();
             doc.Replace(property, value);
@@ -28,9 +28,7 @@ namespace Acamti.Be.Fluent.With.GenericBuilder
 
         private static bool IsValidProperty<T, TProp>(Expression<Func<T, TProp>> memberLambda)
         {
-            var memberSelectorExpression = memberLambda.Body as MemberExpression;
-
-            if (memberSelectorExpression != null)
+            if (memberLambda.Body is MemberExpression memberSelectorExpression)
             {
                 var property = memberSelectorExpression.Member as PropertyInfo;
                 if (property != null) return true;

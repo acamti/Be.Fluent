@@ -57,7 +57,8 @@ namespace Be.Fluent.Tests.Describe_With_Generics
         [TestMethod]
         public async Task It_ShouldCreateBuilderOutOfAsyncFuncOfModel()
         {
-            Func<Task<TestHelperClass>> myClassGetter = () => Task.FromResult(new TestHelperClass
+            Func<Task<TestHelperClass>> myClassGetter = () => Task.FromResult(
+                new TestHelperClass
                 {
                     Prop1 = "some value",
                     Prop2 = 54,
@@ -80,7 +81,8 @@ namespace Be.Fluent.Tests.Describe_With_Generics
         [TestMethod]
         public async Task It_ShouldCreateBuilderOutOfAsyncModel()
         {
-            Task<TestHelperClass> myClassGetter = Task.FromResult(new TestHelperClass
+            Task<TestHelperClass> myClassGetter = Task.FromResult(
+                new TestHelperClass
                 {
                     Prop1 = "some value",
                     Prop2 = 54,

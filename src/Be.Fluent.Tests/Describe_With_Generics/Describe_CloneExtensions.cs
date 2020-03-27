@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Acamti.Be.Fluent.With.Generics;
 using FluentAssertions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -11,7 +12,16 @@ namespace Be.Fluent.Tests.Describe_With_Generics
         [TestMethod]
         public void It_ShouldReturnAnObjectIdentical()
         {
-            var objToClone = new Obj1 {S = "some string", D = DateTime.Now, O = new Obj2 {I = 4, B = true}};
+            var objToClone = new Obj1
+            {
+                S = "some string",
+                D = DateTime.Now,
+                O = new Obj2
+                {
+                    I = 4,
+                    B = true
+                }
+            };
 
             Obj1 result = objToClone.Clone();
 
@@ -19,9 +29,39 @@ namespace Be.Fluent.Tests.Describe_With_Generics
         }
 
         [TestMethod]
+        public async Task It_ShouldReturnAnObjectIdenticalFromTask()
+        {
+            Task<Obj1> objToClone = Task.FromResult(
+                new Obj1
+                {
+                    S = "some string",
+                    D = DateTime.Now,
+                    O = new Obj2
+                    {
+                        I = 4,
+                        B = true
+                    }
+                }
+            );
+
+            Obj1 result = await objToClone.CloneAsync();
+
+            result.Should().BeEquivalentTo(await objToClone);
+        }
+
+        [TestMethod]
         public void It_ShouldProduceAnImmutableObject()
         {
-            var objToClone = new Obj1 {S = "some string", D = DateTime.Now, O = new Obj2 {I = 4, B = true}};
+            var objToClone = new Obj1
+            {
+                S = "some string",
+                D = DateTime.Now,
+                O = new Obj2
+                {
+                    I = 4,
+                    B = true
+                }
+            };
 
             Obj1 result = objToClone.Clone();
 

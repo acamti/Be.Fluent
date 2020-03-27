@@ -14,7 +14,7 @@ namespace Be.Fluent.Tests.Describe_With_Generics
             var source = 1;
             var expected = "1";
 
-            string result = await source.Pipe(s => Task.Run(() => $"{s}"));
+            string result = await source.PipeAsync(s => Task.Run(() => $"{s}"));
 
             result.Should().BeEquivalentTo(expected);
         }
@@ -25,7 +25,7 @@ namespace Be.Fluent.Tests.Describe_With_Generics
             var source = 1;
             var expected = "1.0";
 
-            string result = await source.Pipe((s, p1) => Task.Run(() => $"{s}.{p1}"), 0);
+            string result = await source.PipeAsync((s, p1) => Task.Run(() => $"{s}.{p1}"), 0);
 
             result.Should().BeEquivalentTo(expected);
         }
@@ -36,7 +36,7 @@ namespace Be.Fluent.Tests.Describe_With_Generics
             var source = 1;
             var expected = "1.0.0";
 
-            string result = await source.Pipe((s, p1, p2) => Task.Run(() => $"{s}.{p1}.{p2}"), 0, 0);
+            string result = await source.PipeAsync((s, p1, p2) => Task.Run(() => $"{s}.{p1}.{p2}"), 0, 0);
 
             result.Should().BeEquivalentTo(expected);
         }
@@ -47,7 +47,7 @@ namespace Be.Fluent.Tests.Describe_With_Generics
             var source = 1;
             var expected = "1.0.0.0";
 
-            string result = await source.Pipe((s, p1, p2, p3) => Task.Run(() => $"{s}.{p1}.{p2}.{p3}"), 0, 0, 0);
+            string result = await source.PipeAsync((s, p1, p2, p3) => Task.Run(() => $"{s}.{p1}.{p2}.{p3}"), 0, 0, 0);
 
             result.Should().BeEquivalentTo(expected);
         }
