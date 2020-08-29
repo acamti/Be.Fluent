@@ -13,8 +13,8 @@ namespace Acamti.Be.Fluent.With.IEnumerables
                 action(item);
         }
 
-        public static Task ForEachAsync<TSource>(this IEnumerable<TSource> source, Func<TSource, Task> action) =>
-            Task.WhenAll(source.Select(action));
+        public static async Task ForEachAsync<TSource>(this IEnumerable<TSource> source, Func<TSource, Task> action) =>
+            await Task.WhenAll(source.Select(action));
 
         public static async Task ForEachAsync<TSource>(this Task<IEnumerable<TSource>> source, Action<TSource> action) =>
             (await source).ForEach(action);

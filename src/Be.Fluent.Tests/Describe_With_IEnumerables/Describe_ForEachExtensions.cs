@@ -28,7 +28,7 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
             IEnumerable<int> initialList = new[] { 1, 2, 3 };
             var container = new List<bool>();
 
-            await initialList.ForEachAsync(async item => await Task.Run(() => container.Add(item == 2)));
+            await initialList.ForEachAsync(item => Task.Run(() => container.Add(item == 2)));
 
             container.Should().BeEquivalentTo(expected);
         }
@@ -52,7 +52,7 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
             Task<IEnumerable<int>> initialList = Task.FromResult(new[] { 1, 2, 3 } as IEnumerable<int>);
             var container = new List<bool>();
 
-            await initialList.ForEachAsync(async item => await Task.Run(() => container.Add(item == 2)));
+            await initialList.ForEachAsync(item => Task.Run(() => container.Add(item == 2)));
 
             container.Should().BeEquivalentTo(expected);
         }
