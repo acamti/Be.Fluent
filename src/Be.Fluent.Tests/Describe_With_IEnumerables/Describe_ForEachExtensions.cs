@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Acamti.Be.Fluent.With.IEnumerables;
 using FluentAssertions;
+using FluentAssertions.Specialized;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Be.Fluent.Tests.Describe_With_IEnumerables
@@ -41,18 +42,6 @@ namespace Be.Fluent.Tests.Describe_With_IEnumerables
             var container = new List<bool>();
 
             await initialList.ForEachAsync(item => container.Add(item == 2));
-
-            container.Should().BeEquivalentTo(expected);
-        }
-
-        [TestMethod]
-        public async Task It_Should_ProduceDesireAction_WhenSourceIsAsync_AndActionIsASync()
-        {
-            IEnumerable<bool> expected = new[] { false, true, false };
-            Task<IEnumerable<int>> initialList = Task.FromResult(new[] { 1, 2, 3 } as IEnumerable<int>);
-            var container = new List<bool>();
-
-            await initialList.ForEachAsync(item => Task.Run(() => container.Add(item == 2)));
 
             container.Should().BeEquivalentTo(expected);
         }
