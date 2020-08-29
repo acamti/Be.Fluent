@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.1</TargetFramework>
     <AssemblyName>Acamti.Be.Fluent</AssemblyName>
     <RootNamespace>Acamti.Be.Fluent</RootNamespace>
-    <Version>5.1.0</Version>
+    <Version>5.1.1</Version>
     <Authors>Manuel Mayer</Authors>
     <Company>ACAM Services et Conseils TI</Company>
     <Description>Provides a library of extensions helping to be more fluent when developing</Description>
